@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Catálogo - Patitas Felices</title>
+	<link rel="icon" href="Patitas Felices.png">
+	<style>
+		body {
+			font-family: "Comic Sans MS", cursive, sans-serif;
+			background-color: #fdddca;
+			margin: 0;
+			padding: 0;
+			text-align: center; 
+			background-image: url(https://img.freepik.com/vector-gratis/lindas-divertidas-huellas-dedos-vector-diseno-fondo-proyecto-su-hijo_1017-47620.jpg);
+		}
+		.menu {
+			display: flex;
+			justify-content: center;
+			background-color: #333;
+			padding: 15px 0;
+			border-bottom: 4px solid #ff6600;
+			position: sticky;
+			top: 0;
+			width: 100%;
+			z-index: 999;
+		}
+		.menu a {
+			color: white;
+			text-decoration: none;
+			font-size: 20px;
+			font-weight: bold;
+			padding: 15px 30px;
+			transition: 0.3s;
+			border-radius: 5px;
+		}
+		.menu a:hover {
+			background-color: #ff6600;
+			color: white;
+		}
+
+		.contenedor {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 20px;
+			max-width: 900px;
+			margin: 50px auto;
+			padding: 20px;
+		}
+
+		.seccion {
+			background: white;
+			border-radius: 50px;
+			padding: 20px;
+			box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+		}
+
+		.seccion h2 {
+			color: #ff6600;
+		}
+
+		.boton-regresar {
+			position: fixed;
+			top: 20px;
+			left: 20px;
+			background-color: #ff6600;
+			padding: 10px 20px;
+			border-radius: 50px;
+			color: white;
+			text-decoration: none;
+			font-weight: bold;
+			transition: 0.3s;
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+			z-index: 1000;
+		}
+		.boton-regresar:hover {
+			background-color: #ff4500;
+		}
+
+	</style>
+</head>
+<body>
+
+	<a href="index.html" class="boton-regresar">Inicio</a>
+
+	<nav class="menu">
+		<a href="estetica.html">Estética</a>
+		<a href="veterinaria.html">Veterinaria</a>
+		<a href="accesorios.html">Accesorios</a>
+		<a href="cremacion.html">Cremación</a>
+	</nav>
+
+	<div class="contenedor">
+		<div id="estetica" class="seccion">
+			<h2>Estética</h2>
+			<p>En la sección estética, tenemos baños que incluyen corte de pelo y una limpieza profunda.</p>
+			<p>Más información en la sección "Estética".</p>
+	  	</div>
+
+		<div id="veterinaria" class="seccion">
+			<h2>Veterinaria</h2>
+			<p>En la sección veterinaria, atendemos a su mascota cuando está enferma o tenga alguna complicación.</p>
+			<p>¡Agenda tu cita pronto en la sección "Veterinaria"!</p>
+		</div>
+
+		<div id="accesorios" class="seccion">
+			<h2>Accesorios</h2>
+			<p>En la sección accesorios, tenemos juguetes, pecheras, correas, etc.</p>
+			<p>¡Visita nuestra lista de precios en la sección "Accesorios"!</p>
+		</div>
+
+		<div id="cremacion" class="seccion">
+			<h2>Cremación</h2>
+			<p>En la sección cremación, tenemos un servicio de cremación para mascotas, puedes elegir entre diferentes tipos de urnas. 
+				El precio varía dependiendo de su peso, puedes elegir una para honrar a tu mascota...</p>
+			<p> ¡Visita nuestra lista de precios en la sección "Cremación"!</p>
+		</div>
+	</div>
+
+</body>
+</html>
+

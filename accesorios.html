@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patitas Felices</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fdddca;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://img.freepik.com/vector-gratis/lindas-divertidas-huellas-dedos-vector-diseno-fondo-proyecto-su-hijo_1017-47620.jpg');
+        }
+        .contenedor {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #ff6600;
+        }
+        .productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .producto {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.2s;
+            position: relative;
+        }
+        .producto:hover {
+            transform: scale(1.05);
+        }
+        .producto img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .descripcion {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+            display: block;
+        }
+        .boton-carrito {
+            display: block;
+            margin-top: 10px;
+            padding: 8px;
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .boton-carrito:hover {
+            background-color: #ff4500;
+        }
+
+        .boton-limpiar {
+            display: inline-block;
+            margin-right: 15px;
+            padding: 6px 15px;
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .boton-limpiar:hover {
+            background-color: #ff4500;
+        }
+
+        .boton-comprar {
+            display: inline-block;
+            padding: 6px 15px;
+            font-size: 14px;
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .boton-comprar:hover {
+            background-color: #ff4500;
+        }
+
+        .message {
+            display: none;
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+        #searchBar {
+            margin-bottom: 20px;
+            padding: 8px;
+            width: 300px;
+            font-size: 16px;
+            border-radius: 50px;
+        }
+        .volver {
+            margin-top: 5px;
+            position: absolute;
+            left: 110px;
+            top: 70px;
+            z-index: 1000;
+        }
+        .volver a {
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            background-color: #ff6600;
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+        .volver a:hover {
+            background-color: #ff4500;
+        }
+        .redes {
+            position: absolute;
+            top: 20px;
+            right: 120px;
+            margin-top: 20px;
+            z-index: 10000; 
+        }
+        .redes a {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            background-color: #ff6600;
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .redes a:hover {
+            background-color: #ff4500;
+        }
+
+        .p3 {
+            color: #ff6600;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Patitas Felices</h1>
+        <h1>↓↓ El carrito se encuentra en la parte inferior ↓↓</h1>
+        <div class="volver">
+            <a href="catalogo.html" class="boton-regresar">Volver al Catálogo</a>
+        </div>
+        <div class="redes">
+			<h2 class="p3">Más información en:</h2>
+			<a href="https://www.instagram.com/pati_tasfelicesmx">Instagram</a>
+			<a href="https://www.facebook.com/share/16Cydxu6Mp/">Facebook</a>
+		</div>
+        <input type="text" id="searchBar" placeholder="Buscar productos..." onkeyup="buscarProductos()">
+        <div class="productos" id="listaProductos">
+
+            <div class="producto" data-nombre="Collar Colorido" onclick="toggleDescripcion(this)">
+                <img src="h1.jpeg" alt="Collar Colorido">
+                <h3>Collar Colorido</h3>
+                <p>Precio: $150 MXN</p>
+                <p class="descripcion">Collar ajustable con diseño vibrante para perros de todos los tamaños.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Collar Colorido', 150)">Añadir al Carrito</button>
+            </div>
+            
+            <div class="producto" data-nombre="Juguete de Cuerda" onclick="toggleDescripcion(this)">
+                <img src="h2.jpeg" alt="Juguete de Cuerda">
+                <h3>Juguete de Cuerda</h3>
+                <p>Precio: $120 MXN</p>
+                <p class="descripcion">Juguete resistente ideal para juegos de tira y afloja.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Juguete de Cuerda', 120)">Añadir al Carrito</button>
+            </div>
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h3.jpeg" alt="Cama Acolchada">
+                <h3>Cama Acolchada</h3>
+                <p>Precio: $600 MXN</p>
+                <p class="descripcion">Cama suave y cómoda para el descanso de tu mascota.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Cama Acolchada', 600)">Añadir al Carrito</button>
+            </div>
+           
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h4.png" alt="Correa">
+                <h3>Correa</h3>
+                <p>Precio: $180 MXN</p>
+                <p class="descripcion">Correa con material reflectante para mayor seguridad en paseos nocturnos.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Correa', 180)">Añadir al Carrito</button>
+            </div>
+            
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h5.jpeg" alt="Comedero para perros">
+                <h3>Comedero Antideslizante</h3>
+                <p>Precio: $90 MXN</p>
+                <p class="descripcion">Plato de acero inoxidable con base antideslizante.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Comedero Antideslizante', 90)">Añadir al Carrito</button>
+            </div>
+            
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h6.jpeg" alt="Dispensador de Bolsas">
+                <h3>Dispensador de Bolsas</h3>
+                <p>Precio: $70 MXN</p>
+                <p class="descripcion">Dispensador portátil de bolsas para desechos con clip para correa.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Dispensador de Bolsas', 70)">Añadir al Carrito</button>
+            </div>
+           
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h7.jpeg" alt="Cepillo Deslanador">
+                <h3>Cepillo Deslanador</h3>
+                <p>Precio: $200 MXN</p>
+                <p class="descripcion">Cepillo para eliminar el pelo suelto y reducir la muda.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Cepillo Desalanador', 200)">Añadir al Carrito</button>
+            </div>
+           
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h8.jpeg" alt="Pechera">
+                <h3>Arnés Ajustable</h3>
+                <p>Precio: $250 MXN</p>
+                <p class="descripcion">Arnés cómodo y ajustable para paseos seguros.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Arnés Ajustable', 250)">Añadir al Carrito</button>
+            </div>
+           
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h9.jpeg" alt="Bandana de Moda">
+                <h3>Bandana de Moda</h3>
+                <p>Precio: $80 MXN</p>
+                <p class="descripcion">Bandana estilizada para darle un toque especial a tu perro</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Bandana de Moda', 80)">Añadir al Carrito</button>
+        	</div>
+
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h10.jpeg" alt="Mordedera en forma de Hueso">
+                <h3>Mordedera en forma de Hueso</h3>
+                <p>Precio: $130 MXN</p>
+                <p class="descripcion">Juguete de goma resistente para fortalecer la mordida y entretener.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Mordedera en forma de Hueso', 130)">Añadir al Carrito</button>
+            </div>
+           
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h11.jpeg" alt="Capa Impermeable">
+                <h3>Capa Impermeable</h3>
+                <p>Precio: $300 MXN</p>
+                <p class="descripcion">Capa ligera y resistente al agua para proteger de la lluvia.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Capa Impermeable', 300)">Añadir al Carrito</button>
+            </div>
+           
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h12.jpeg" alt="Gafas Protectoras">
+                <h3>Gafas Protectoras</h3>
+                <p>Precio: $250 MXN</p>
+                <p class="descripcion">Gafas con protección UV ideales para paseos en días soleados.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Gafas Protectoras', 250)">Añadir al Carrito</button>
+            </div>
+            
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h13.jpeg" alt="Mochila de Transporte">
+                <h3>Mochila de Transporte</h3>
+                <p>Precio: $600 MXN</p>
+                <p class="descripcion">Mochila ergonómica para transportar a tu perro de manera cómoda.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Mochila de Transporte', 600)">Añadir al Carrito</button>
+            </div>
+            
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h14.jpeg" alt="Juguete Interactivo">
+                <h3>Juguete Interactivo</h3>
+                <p>Precio: $220 MXN</p>
+                <p class="descripcion">Juguete que libera premios para estimular la inteligencia del perro.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Juguete Interactivo', 220)">Añadir al Carrito</button>
+            </div>
+           
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h15.jpeg" alt="Bozal Suave">
+                <h3>Bozal Suave</h3>
+                <p>Precio: $180 MXN</p>
+                <p class="descripcion">Bozal cómodo para evitar mordeduras sin causar molestias.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Bozal Suave', 180)">Añadir al Carrito</button>
+            </div>
+            
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h16.jpeg" alt="Fuente de Agua Automática">
+                <h3>Fuente de Agua Automática</h3>
+                <p>Precio: $750 MXN</p>
+                <p class="descripcion">Fuente con filtro que proporciona agua fresca y en movimiento.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Fuente de Agua Automática', 750)">Añadir al Carrito</button>
+            </div>
+           
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h17.jpeg" alt="Peluche con Sonido">
+                <h3>Peluche con Sonido</h3>
+                <p>Precio: $160 MXN</p>
+                <p class="descripcion">Peluche con sonido de chirrido para mantener entretenido a tu perro.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Peluche con Sonido', 160)">Añadir al Carrito</button>
+            </div>
+            
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h18.jpeg" alt="Porta Snacks">
+                <h3>Porta Snacks</h3>
+                <p>Precio: $90 MXN</p>
+                <p class="descripcion">Bolsa portátil para guardar premios durante los paseos.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Porta Snacks', 90)">Añadir al Carrito</button>
+            </div>
+            
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h19.jpeg" alt="Cortauñas">
+                <h3>Corta uñas</h3>
+                <p>Precio: $140 MXN</p>
+                <p class="descripcion">Cortauñas con mango ergonómico y tope de seguridad.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Corta uñas', 140)">Añadir al Carrito</button>
+            </div>
+           
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h20.jpeg" alt="Toalla de Microfibra">
+                <h3>Toalla de Microfibra</h3>
+                <p>Precio: $180 MXN</p>
+                <p class="descripcion">Toalla de secado rápido ideal para después del baño.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Toalla de Microfibra', 180)">Añadir al Carrito</button>
+            </div>
+           
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h21.jpeg" alt="Piscina Plegable">
+                <h3>Piscina Plegable</h3>
+                <p>Precio: $850 MXN</p>
+                <p class="descripcion">Piscina portátil y resistente para que tu perro se divierta en verano.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Piscina Plegable', 850)">Añadir al Carrito</button>
+            </div>
+           
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h22.jpeg" alt="Caja Transportadora">
+                <h3>Caja Transportadora</h3>
+                <p>Precio: $1,200 MXN</p>
+                <p class="descripcion">Caja de transporte segura y ventilada para viajes en auto o avión.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Caja Transportadora', 1200)">Añadir al Carrito</button>
+            </div>
+           
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h23.jpeg" alt="Alfombra de Entrenamiento">
+                <h3>Alfombra de Entrenamiento</h3>
+                <p>Precio: $280 MXN</p>
+                <p class="descripcion">Alfombra absorbente para ayudar en el entrenamiento de cachorros.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Alfombra de Entrenamiento', 280)">Añadir al Carrito</button>
+            </div>
+         
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h24.jpeg" alt="Pastillas Antipulgas">
+                <h3>Pastillas Antipulgas</h3>
+                <p>Precio: $350 MXN</p>
+                <p class="descripcion">Tratamiento oral efectivo contra pulgas y garrapatas.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Pastillas Antipulgas', 350)">Añadir al Carrito</button>
+            </div>
+          
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h25.jpeg" alt="Chaqueta para Invierno">
+                <h3>Chaqueta para Invierno</h3>
+                <p>Precio: $400 MXN</p>
+                <p class="descripcion">Abrigo acolchonado para mantener caliente a tu perro en invierno.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Chaqueta para Invierno', 400)">Añadir al Carrito</button>
+            </div>
+         
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h26.jpeg" alt="Dispensador de Comida">
+                <h3>Dispensador de Comida</h3>
+                <p>Precio: $950 MXN</p>
+                <p class="descripcion">Dispensador automático de alimento con temporizador.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Dispensador de Comida', 950)">Añadir al Carrito</button>
+            </div>
+        
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h27.jpeg" alt="Bozal de Canasta">
+                <h3>Bozal de Canasta</h3>
+                <p>Precio: $220 MXN</p>
+                <p class="descripcion">Bozal de canasta transpirable para mayor comodidad.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Bozal de Canasta', 220)">Añadir al Carrito</button>
+            </div>
+          
+            <div class="producto" onclick="toggleDescripcion(this)">
+                <img src="h28.jpeg" alt="Peluche Masticable">
+                <h3>Peluche Masticable</h3>
+                <p>Precio: $130 MXN</p>
+                <p class="descripcion">Juguete de felpa con material resistente para morder.</p>
+                <button class="boton-carrito" onclick="agregarAlCarrito('Peluche Masticable', 130)">Añadir al Carrito</button>
+            </div>
+        </div>
+
+        <div class="carrito" id="carrito">
+            <h3>Carrito</h3>
+            <ul id="listaCarrito"></ul>
+            <div class="carrito-total" id="totalCarrito">Precio Total: $0 MXN</div>
+            <button class="boton-limpiar" onclick="limpiarCarrito()">Limpiar Carrito</button>
+            <button class="boton-comprar" onclick="comprar()">Comprar</button>
+            <div id="mensaje" class="message">¡Gracias por su compra, su producto llegará muy pronto!</div>
+        </div>
+    </div>
+
+    <script>
+        let carrito = [];
+        
+        function toggleDescripcion(producto) {
+            const descripcion = producto.querySelector('.descripcion');
+        }
+    
+        function agregarAlCarrito(nombre, precio) {
+            const productoExistente = carrito.find(item => item.nombre === nombre);
+            if (productoExistente) {
+                productoExistente.cantidad += 1;
+            } else {
+                carrito.push({ nombre, precio, cantidad: 1 });
+            }
+            actualizarCarrito();
+        }
+    
+        function actualizarCarrito() {
+            const listaCarrito = document.getElementById('listaCarrito');
+            const totalCarrito = document.getElementById('totalCarrito');
+            listaCarrito.innerHTML = ''; 
+    
+            let total = 0;
+            carrito.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.nombre} - ${item.cantidad} x $${item.precio} MXN`;
+                listaCarrito.appendChild(li);
+                total += item.precio * item.cantidad;
+            });
+    
+            totalCarrito.textContent = `Precio Total: $${total} MXN`;
+        }
+    
+        function limpiarCarrito() {
+            carrito = []; 
+            actualizarCarrito(); 
+        }
+    
+        function buscarProductos() {
+            const query = document.getElementById('searchBar').value.toLowerCase();
+            const productos = document.querySelectorAll('.producto');
+            productos.forEach(producto => {
+                const nombre = producto.getAttribute('data-nombre').toLowerCase();
+                if (nombre.includes(query)) {
+                    producto.style.display = 'block';
+                } else {
+                    producto.style.display = 'none';
+                }
+            });
+        }
+    
+        function comprar() {
+            if (carrito.length > 0) {
+            const mensaje = document.getElementById('mensaje');
+                mensaje.style.display = 'block';  
+                carrito = [];
+                actualizarCarrito(); 
+
+                setTimeout(function() {
+                mensaje.style.display = 'none';
+                }, 3000);
+            } else {
+                alert('No hay productos en el carrito para comprar.');
+    }
+}
+    </script>
+    
+</body>
+</html>
